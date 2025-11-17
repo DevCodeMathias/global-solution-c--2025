@@ -103,5 +103,4 @@ Campos:
 
 
 
-# 🏛️ Arquitetura do Projeto
 
