@@ -71,19 +71,35 @@ Principais práticas aplicadas:
 
 ## 👤 User
 
-Campos:
+A entidade **User** representa um usuário do sistema, contendo dados de autenticação, informações pessoais, endereço completo e relacionamento com benefícios.
 
-- Id  
-- Name  
-- Email  
-- PasswordHash  
-- Role  
-- Endereço completo  
-  - Street, Number, Complement  
-  - Neighborhood, City, State  
-  - ZipCode, Country  
-- CreatedAt, UpdatedAt  
-- Lista de benefícios (`ICollection<Benefit>`)
+### 🧩 Campos da Entidade
+
+- **Id** — Identificador único do usuário  
+- **Name** — Nome completo  
+- **Email** — Endereço de e-mail único  
+- **PasswordHash** — Hash seguro da senha  
+- **Role** — Papel do usuário no sistema (`User`, `Admin`)  
+
+### 📍 Endereço Completo
+
+- **Street** — Rua  
+- **Number** — Número  
+- **Complement** — Complemento (opcional)  
+- **Neighborhood** — Bairro  
+- **City** — Cidade  
+- **State** — Estado (UF)  
+- **ZipCode** — CEP  
+- **Country** — País  
+
+### 🕒 Auditoria
+
+- **CreatedAt** — Data de criação do usuário  
+- **UpdatedAt** — Data da última atualização  
+
+### 🎁 Relacionamentos
+
+- **Benefits** — Lista de benefícios associados ao usuário (`ICollection<Benefit>`)  
 
 ---
 
@@ -101,6 +117,7 @@ Campos:
 - MetadataJson  
 - CreatedAt, UpdatedAt  
 
-
+### 🛣️ Rotas da api
+- disponiveis via swagger pelo link : https://exchangehouseapi20251114154545-b2d4gqd8bbffdhfs.brazilsouth-01.azurewebsites.net/swagger/index.html
 
 
