@@ -1,0 +1,91 @@
+[
+  {
+    "ContainingType": "exchangeHouse_api.Controllers.BenefitsController",
+    "Method": "Create",
+    "RelativePath": "api/v1/users/{userId}/Benefits",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "benefit",
+        "Type": "exchangeHouse_api.Domain.Enitty.Benefit",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "exchangeHouse_api.Controllers.BenefitsController",
+    "Method": "GetById",
+    "RelativePath": "api/v1/users/{userId}/Benefits",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "exchangeHouse_api.Controllers.BenefitsController",
+    "Method": "Update",
+    "RelativePath": "api/v1/users/{userId}/Benefits",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "benefit",
+        "Type": "exchangeHouse_api.Domain.Enitty.Benefit",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "exchangeHouse_api.Controllers.BenefitsController",
+    "Method": "Delete",
+    "RelativePath": "api/v1/users/{userId}/Benefits",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
