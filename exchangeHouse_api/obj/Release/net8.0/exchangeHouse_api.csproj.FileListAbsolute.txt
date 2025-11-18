@@ -107,3 +107,4 @@ C:\repo\FIAP\exchangeHouse_api\exchangeHouse_api\obj\Release\net8.0\refint\excha
 C:\repo\FIAP\exchangeHouse_api\exchangeHouse_api\obj\Release\net8.0\exchangeHouse_api.pdb
 C:\repo\FIAP\exchangeHouse_api\exchangeHouse_api\obj\Release\net8.0\exchangeHouse_api.genruntimeconfig.cache
 C:\repo\FIAP\exchangeHouse_api\exchangeHouse_api\obj\Release\net8.0\ref\exchangeHouse_api.dll
+C:\repo\FIAP\exchangeHouse_api\exchangeHouse_api\obj\Release\net8.0\exchangeHouse_api.sourcelink.json

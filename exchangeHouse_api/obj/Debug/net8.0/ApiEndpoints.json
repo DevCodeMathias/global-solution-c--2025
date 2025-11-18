@@ -1,6 +1,6 @@
 [
   {
-    "ContainingType": "exchangeHouse_api.Controllers.BenefitsController",
+    "ContainingType": "BenefitsController",
     "Method": "Create",
     "RelativePath": "api/v1/users/{userId}/Benefits",
     "HttpMethod": "POST",
@@ -21,9 +21,25 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "exchangeHouse_api.Controllers.BenefitsController",
-    "Method": "GetById",
+    "ContainingType": "BenefitsController",
+    "Method": "GetAll",
     "RelativePath": "api/v1/users/{userId}/Benefits",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BenefitsController",
+    "Method": "GetById",
+    "RelativePath": "api/v1/users/{userId}/Benefits/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -36,15 +52,15 @@
       {
         "Name": "id",
         "Type": "System.Guid",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "exchangeHouse_api.Controllers.BenefitsController",
+    "ContainingType": "BenefitsController",
     "Method": "Update",
-    "RelativePath": "api/v1/users/{userId}/Benefits",
+    "RelativePath": "api/v1/users/{userId}/Benefits/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -57,7 +73,7 @@
       {
         "Name": "id",
         "Type": "System.Guid",
-        "IsRequired": false
+        "IsRequired": true
       },
       {
         "Name": "benefit",
@@ -68,9 +84,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "exchangeHouse_api.Controllers.BenefitsController",
+    "ContainingType": "BenefitsController",
     "Method": "Delete",
-    "RelativePath": "api/v1/users/{userId}/Benefits",
+    "RelativePath": "api/v1/users/{userId}/Benefits/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -83,7 +99,7 @@
       {
         "Name": "id",
         "Type": "System.Guid",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

@@ -31,6 +31,15 @@ namespace exchangeHouse_api.Application.Service
             return benefit;
         }
 
+        public async Task<List<Benefit>> GetAll()
+        {
+            var benefit = await _context.WorkBenefits.ToListAsync();
+
+            return benefit;
+        }
+
+
+
         public async Task DeleteAsync(Guid id)
         {
             var existing = await _context.WorkBenefits

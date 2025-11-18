@@ -23,7 +23,7 @@ namespace exchangeHouse_api.Infrastructure.Data
 
                 entity.HasKey(e => e.Id);
 
-                entity.Property(e => e.User_Id)
+                entity.Property(e => e.UserId)
                          .IsRequired();
 
                 entity.Property(e => e.Name)

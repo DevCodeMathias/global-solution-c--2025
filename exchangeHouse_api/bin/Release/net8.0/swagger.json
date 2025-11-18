@@ -46,10 +46,31 @@
             "name": "userId",
             "required": true,
             "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/users/{userId}/Benefits/{id}": {
+      "get": {
+        "tags": [
+          "Benefits"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "type": "string"
           },
           {
-            "in": "query",
+            "in": "path",
             "name": "id",
+            "required": true,
             "type": "string",
             "format": "uuid"
           }
@@ -77,8 +98,9 @@
             "type": "string"
           },
           {
-            "in": "query",
+            "in": "path",
             "name": "id",
+            "required": true,
             "type": "string",
             "format": "uuid"
           },
@@ -108,8 +130,9 @@
             "type": "string"
           },
           {
-            "in": "query",
+            "in": "path",
             "name": "id",
+            "required": true,
             "type": "string",
             "format": "uuid"
           }
@@ -126,7 +149,7 @@
     "Benefit": {
       "type": "object",
       "properties": {
-        "user_Id": {
+        "userId": {
           "type": "string"
         },
         "id": {
@@ -140,7 +163,7 @@
           "type": "string"
         },
         "category": {
-          "$ref": "#/definitions/BenefitCategoryc"
+          "type": "string"
         },
         "amount": {
           "format": "double",
@@ -163,16 +186,6 @@
         }
       },
       "additionalProperties": false
-    },
-    "BenefitCategoryc": {
-      "format": "int32",
-      "enum": [
-        0,
-        1,
-        2,
-        3
-      ],
-      "type": "integer"
     }
   }
 }

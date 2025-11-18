@@ -57,10 +57,33 @@
             "schema": {
               "type": "string"
             }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/users/{userId}/Benefits/{id}": {
+      "get": {
+        "tags": [
+          "Benefits"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "name": "id",
-            "in": "query",
+            "in": "path",
+            "required": true,
             "schema": {
               "type": "string",
               "format": "uuid"
@@ -88,7 +111,8 @@
           },
           {
             "name": "id",
-            "in": "query",
+            "in": "path",
+            "required": true,
             "schema": {
               "type": "string",
               "format": "uuid"
@@ -135,7 +159,8 @@
           },
           {
             "name": "id",
-            "in": "query",
+            "in": "path",
+            "required": true,
             "schema": {
               "type": "string",
               "format": "uuid"
@@ -155,7 +180,7 @@
       "Benefit": {
         "type": "object",
         "properties": {
-          "user_Id": {
+          "userId": {
             "type": "string",
             "nullable": true
           },
@@ -172,7 +197,8 @@
             "nullable": true
           },
           "category": {
-            "$ref": "#/components/schemas/BenefitCategoryc"
+            "type": "string",
+            "nullable": true
           },
           "amount": {
             "type": "number",
@@ -197,16 +223,6 @@
           }
         },
         "additionalProperties": false
-      },
-      "BenefitCategoryc": {
-        "enum": [
-          0,
-          1,
-          2,
-          3
-        ],
-        "type": "integer",
-        "format": "int32"
       }
     }
   }
