@@ -10,5 +10,7 @@ namespace exchangeHouse_api.Domain.Interfaces.Service
         Task CreateAsync(Benefit benefit);
         Task DeleteAsync(Guid id);
         Task UpdateAsync(Guid id, Benefit updatedBenefit);
+        Task<BenefitAcquisitionHistory> AcquireBenefitAsync(string userId, Guid benefitId, int quantity);
     }
 }
+

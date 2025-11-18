@@ -1,4 +1,5 @@
-﻿using exchangeHouse_api.Domain.Enitty;
+﻿using exchangeHouse_api.Application.DTOs;
+using exchangeHouse_api.Domain.Enitty;
 using exchangeHouse_api.Domain.Interfaces.Service;
 using Microsoft.AspNetCore.Mvc;
 
@@ -75,4 +76,28 @@ public class BenefitsController : ControllerBase
         await _benefitService.DeleteAsync(id);
         return NoContent();
     }
+
+    // POST api/v1/users/{userId}/benefits/{id}/acquire
+    [HttpPost("{id:guid}/acquire")]
+    public async Task<IActionResult> AcquireBenefit([FromRoute] string userId, [FromRoute] Guid id, [FromBody] AcquireBenefitRequest request)
+    {
+        if (request == null || request.Quantity <= 0)
+            return BadRequest("Informe uma quantidade válida para aquisição do benefício.");
+
+        try
+        {
+            var history = await _benefitService.AcquireBenefitAsync(userId, id, request.Quantity);
+            return Ok(history);
+        }
+        catch (KeyNotFoundException ex)
+        {
+            return NotFound(ex.Message);
+        }
+        catch (InvalidOperationException ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+
+
 }

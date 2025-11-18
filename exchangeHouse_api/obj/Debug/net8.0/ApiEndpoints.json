@@ -103,5 +103,31 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BenefitsController",
+    "Method": "AcquireBenefit",
+    "RelativePath": "api/v1/users/{userId}/Benefits/{id}/acquire",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "request",
+        "Type": "exchangeHouse_api.Application.DTOs.AcquireBenefitRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

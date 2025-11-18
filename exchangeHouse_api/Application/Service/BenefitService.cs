@@ -72,5 +72,47 @@ namespace exchangeHouse_api.Application.Service
             await _context.SaveChangesAsync();
         }
 
+        public async Task<BenefitAcquisitionHistory> AcquireBenefitAsync(string userId, Guid benefitId, int quantity)
+        {
+            if (quantity <= 0)
+                throw new InvalidOperationException("Quantidade precisa ser maior que zero.");
+
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == userId);
+
+            if (user == null)
+                throw new KeyNotFoundException($"Usuário com ID {userId} não encontrado.");
+
+            var benefit = await _context.WorkBenefits.FirstOrDefaultAsync(b => b.Id == benefitId);
+
+            if (benefit == null)
+                throw new KeyNotFoundException($"Benefício com ID {benefitId} não encontrado.");
+
+            if (benefit.Quantity < quantity)
+                throw new InvalidOperationException("Quantidade solicitada maior que a disponível.");
+
+            var totalCost = benefit.Amount * quantity;
+
+            if (user.WalletBalance < totalCost)
+                throw new InvalidOperationException("Saldo insuficiente na carteira do usuário.");
+
+            user.WalletBalance -= totalCost;
+            benefit.Quantity -= quantity;
+            benefit.UpdatedAt = DateTime.UtcNow;
+
+            var history = new BenefitAcquisitionHistory
+            {
+                UserId = userId,
+                BenefitId = benefitId,
+                Quantity = quantity,
+                AmountSpent = totalCost,
+                CreatedAt = DateTime.UtcNow
+            };
+
+            _context.BenefitAcquisitionHistories.Add(history);
+
+            await _context.SaveChangesAsync();
+
+            return history;
+        }
     }
 }

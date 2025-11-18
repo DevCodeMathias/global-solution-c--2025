@@ -17,6 +17,7 @@
         public string ZipCode { get; set; }
         public string Country { get; set; }
 
+        public decimal WalletBalance { get; set; } = 0m;
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime? UpdatedAt { get; set; }
 

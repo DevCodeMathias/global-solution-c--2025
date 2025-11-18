@@ -12,6 +12,10 @@ namespace exchangeHouse_api.Infrastructure.Data
         }
 
         public DbSet<Benefit> WorkBenefits { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<BenefitAcquisitionHistory> BenefitAcquisitionHistories { get; set; }
+
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -87,7 +91,38 @@ namespace exchangeHouse_api.Infrastructure.Data
                 entity.Property(e => e.ZipCode).HasMaxLength(20);
                 entity.Property(e => e.Country).HasMaxLength(100);
             });
+            modelBuilder.Entity<BenefitAcquisitionHistory>(entity =>
+            {
+                entity.ToTable("BenefitAcquisitionHistories");
 
+                entity.HasKey(e => e.Id);
+
+                entity.Property(e => e.UserId)
+                      .IsRequired();
+
+                entity.Property(e => e.BenefitId)
+                      .IsRequired();
+
+                entity.Property(e => e.Quantity)
+                      .IsRequired();
+
+                entity.Property(e => e.AmountSpent)
+                      .HasColumnType("numeric(18,2)")
+                      .IsRequired();
+
+                entity.Property(e => e.CreatedAt)
+                      .IsRequired();
+
+                entity.HasOne<User>()
+                      .WithMany()
+                      .HasForeignKey(e => e.UserId)
+                      .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasOne<Benefit>()
+                      .WithMany()
+                      .HasForeignKey(e => e.BenefitId)
+                      .OnDelete(DeleteBehavior.Cascade);
+            });
 
         }
     }
