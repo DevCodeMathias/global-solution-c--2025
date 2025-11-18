@@ -1,0 +1,123 @@
+# 📘 ExchangeHouse API
+
+A **ExchangeHouse API** é um serviço desenvolvido em **.NET 8** com **EF Core**, que permite o gerenciamento de **usuários** e seus **benefícios corporativos**.
+
+O sistema suporta diferentes tipos de benefícios:
+
+- 🎁 Itens (kits, brindes, materiais corporativos)  
+- 💤 Folgas (Day Off)  
+- 💆 Serviços (wellness, plano de saúde, etc.)  
+- 🧩 Outros benefícios customizáveis
+
+Cada usuário possui:
+- Dados pessoais  
+- Endereço completo  
+- Relacionamento **1:N** com benefícios  
+
+---
+
+# 🧱 Tecnologias Utilizadas
+
+| Tecnologia | Uso |
+|-----------|-----|
+| **.NET 8 / ASP.NET Core** | Backend da API |
+| **Entity Framework Core 8** | ORM e migrations |
+| **PostgreSQL (Supabase)** | Banco de dados |
+| **Swagger / OpenAPI** | Documentação da API |
+| **Dependency Injection** | Inversão de controle |
+| **Async/Await** | Programação assíncrona |
+| **REST/JSON** | Padrão de comunicação |
+
+---
+
+# 🏛️ Arquitetura do Projeto
+
+```bash
+exchangeHouse_api/
+├── Domain/
+│ ├── Entitty/
+│ │ ├── User.cs
+│ │ └── Benefit.cs
+│ └── Interfaces/
+│ └── IBenefitService.cs
+│
+├── Application/
+│ └── Service/
+│ └── BenefitService.cs
+│
+├── Infrastructure/
+│ └── Data/
+│ └── AppDbContext.cs
+│
+├── Controllers/
+│ └── BenefitsController.cs
+│
+├── Program.cs
+├── appsettings.json
+└── README.md
+```
+Principais práticas aplicadas:
+
+- Clean Architecture  
+- DDD básico  
+- Controllers enxutos  
+- Serviços contendo as regras de negócio  
+- EF Core com Fluent API  
+- Separação clara das camadas  
+
+---
+
+# 🗂️ Entidades
+
+## 👤 User
+
+A entidade **User** representa um usuário do sistema, contendo dados de autenticação, informações pessoais, endereço completo e relacionamento com benefícios.
+
+### 🧩 Campos da Entidade
+
+- **Id** — Identificador único do usuário  
+- **Name** — Nome completo  
+- **Email** — Endereço de e-mail único  
+- **PasswordHash** — Hash seguro da senha  
+- **Role** — Papel do usuário no sistema (`User`, `Admin`)  
+
+### 📍 Endereço Completo
+
+- **Street** — Rua  
+- **Number** — Número  
+- **Complement** — Complemento (opcional)  
+- **Neighborhood** — Bairro  
+- **City** — Cidade  
+- **State** — Estado (UF)  
+- **ZipCode** — CEP  
+- **Country** — País  
+
+### 🕒 Auditoria
+
+- **CreatedAt** — Data de criação do usuário  
+- **UpdatedAt** — Data da última atualização  
+
+### 🎁 Relacionamentos
+
+- **Benefits** — Lista de benefícios associados ao usuário (`ICollection<Benefit>`)  
+
+---
+
+## 🎁 Benefit
+
+Campos:
+
+- Id  
+- User_Id (FK para User)  
+- Name  
+- Description  
+- Category (Item, DayOff, Service, Other)  
+- Quantity  
+- Amount  
+- MetadataJson  
+- CreatedAt, UpdatedAt  
+
+### 🛣️ Rotas da api
+- disponiveis via swagger pelo link : https://exchangehouseapi20251114154545-b2d4gqd8bbffdhfs.brazilsouth-01.azurewebsites.net/swagger/index.html
+
+
