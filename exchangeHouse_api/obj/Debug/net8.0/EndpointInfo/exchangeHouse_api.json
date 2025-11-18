@@ -223,6 +223,28 @@
           }
         }
       }
+    },
+    "/api/v1/users/{userId}/Benefits/acquired": {
+      "get": {
+        "tags": [
+          "Benefits"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {

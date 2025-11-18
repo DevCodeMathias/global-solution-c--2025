@@ -8,5 +8,6 @@
         public int Quantity { get; set; }
         public decimal AmountSpent { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public Benefit Benefit { get; set; }
     }
 }

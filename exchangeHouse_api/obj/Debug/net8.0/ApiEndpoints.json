@@ -129,5 +129,21 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BenefitsController",
+    "Method": "GetAcquiredBenefits",
+    "RelativePath": "api/v1/users/{userId}/Benefits/acquired",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

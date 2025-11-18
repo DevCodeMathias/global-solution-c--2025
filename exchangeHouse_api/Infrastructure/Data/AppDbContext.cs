@@ -118,7 +118,7 @@ namespace exchangeHouse_api.Infrastructure.Data
                       .HasForeignKey(e => e.UserId)
                       .OnDelete(DeleteBehavior.Cascade);
 
-                entity.HasOne<Benefit>()
+                entity.HasOne(e => e.Benefit)
                       .WithMany()
                       .HasForeignKey(e => e.BenefitId)
                       .OnDelete(DeleteBehavior.Cascade);
@@ -127,3 +127,6 @@ namespace exchangeHouse_api.Infrastructure.Data
         }
     }
 }
+
+
+

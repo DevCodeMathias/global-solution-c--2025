@@ -31,6 +31,22 @@ namespace exchangeHouse_api.Application.Service
             return benefit;
         }
 
+        public async Task<IEnumerable<BenefitAcquisitionHistory>> GetAcquiredBenefitsByUserAsync(string userId)
+        {
+            var userExists = await _context.Users.AnyAsync(u => u.Id == userId);
+
+            if (!userExists)
+                throw new KeyNotFoundException($"Usuário com ID {userId} não encontrado.");
+
+            var acquisitions = await _context.BenefitAcquisitionHistories
+                .Where(history => history.UserId == userId)
+                .Include(history => history.Benefit)
+                .OrderByDescending(history => history.CreatedAt)
+                .ToListAsync();
+
+            return acquisitions;
+        }
+
         public async Task<List<Benefit>> GetAll()
         {
             var benefit = await _context.WorkBenefits.ToListAsync();

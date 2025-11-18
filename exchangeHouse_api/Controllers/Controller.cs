@@ -100,4 +100,20 @@ public class BenefitsController : ControllerBase
     }
 
 
+    // GET api/v1/users/{userId}/benefits/acquired
+    [HttpGet("acquired")]
+    public async Task<IActionResult> GetAcquiredBenefits([FromRoute] string userId)
+    {
+        try
+        {
+            var benefits = await _benefitService.GetAcquiredBenefitsByUserAsync(userId);
+            return Ok(benefits);
+        }
+        catch (KeyNotFoundException ex)
+        {
+            return NotFound(ex.Message);
+        }
+    }
+
+
 }
